@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638959303323167474
-    m_Hash: 1717451295
+      ticks: 638960008032355065
+    m_Hash: 3347849589
   m_LockFileStatus:
     m_FilePath: C:/Users/user/Documents/GitHub/JP_pt3/JP_pt3/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638959303355037490
-    m_Hash: 4097985461
+      ticks: 638960008032365037
+    m_Hash: 3415139807
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
