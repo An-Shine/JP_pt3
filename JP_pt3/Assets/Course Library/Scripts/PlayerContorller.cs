@@ -11,6 +11,11 @@ public class PlayerContorller : MonoBehaviour
     public float gravityModifier;
     public bool isOnGround = true;
     public bool gameOver = false;
+    public ParticleSystem explosionParticle;
+    public ParticleSystem dirtParticle;
+    public AudioClip jumpSound;
+    public AudioClip crashSound;
+    AudioSource playerAudio;
     Animator playerAnim;
     readonly int Jump_TRIG = Animator.StringToHash("Jump_trig");
     readonly int DEATH_BOOL = Animator.StringToHash("Death_b");
@@ -32,6 +37,8 @@ public class PlayerContorller : MonoBehaviour
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
+            dirtParticle.Stop();
+            playerAudio.PlayOneShot(jumpSound, 1.0f);       //그때그때 필요한 audio 파일 불러와서 실행
         }
     }
     void OnCollisionEnter(Collision collision)
@@ -39,6 +46,7 @@ public class PlayerContorller : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isOnGround = true;
+            dirtParticle.Play();
         }      
         else if(collision.gameObject.CompareTag("Obstacle"))
         {
@@ -46,6 +54,9 @@ public class PlayerContorller : MonoBehaviour
             Debug.Log("Game Over!");
             playerAnim.SetBool(DEATH_BOOL, true);
             playerAnim.SetInteger(DEATH_TYPE, 1);
+            explosionParticle.Play();
+            dirtParticle.Stop();
+            playerAudio.PlayOneShot(crashSound, 1.0f);
         }
     }
 }
